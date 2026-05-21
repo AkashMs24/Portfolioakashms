@@ -2583,8 +2583,8 @@ function handleResumeDownload(e){
   e.preventDefault();
   // TODO: Replace YOUR_GOOGLE_DRIVE_FILE_ID with your actual Google Drive file ID
   // How: Upload PDF to Drive → Share → Anyone with link → copy the file ID from the URL
-  const FILE_ID = 'YOUR_GOOGLE_DRIVE_FILE_ID';
-  if(FILE_ID === 'YOUR_GOOGLE_DRIVE_FILE_ID'){
+  const FILE_ID = 'https://drive.google.com/file/d/1PvLWBQC7tZjl-17pGDYirbJd1imKWyV_/view?usp=sharing';
+  if(FILE_ID === 'https://drive.google.com/file/d/1PvLWBQC7tZjl-17pGDYirbJd1imKWyV_/view?usp=sharing'){
     // Fallback: open LinkedIn profile so recruiters can still reach you
     if(confirm('Resume link not yet configured.\n\nClick OK to view Akash\'s LinkedIn profile instead, or Cancel to close.')){
       window.open('https://www.linkedin.com/in/akash-m-s-414a21297','_blank');
