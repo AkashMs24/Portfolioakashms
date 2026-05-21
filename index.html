@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akash M S — Data Science Student & ML Engineer</title>
+<title>AKASH M S — Data Science Student & ML Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -365,9 +365,9 @@ h1 em{font-style:normal;color:var(--text3)}
 
 /* ── CHATBOT ── */
 #ai-assistant{position:fixed;bottom:28px;right:28px;z-index:1500}
-.chat-toggle{width:50px;height:50px;background:var(--accent);border:none;display:flex;align-items:center;justify-content:center;cursor:none;font-size:18px;color:#000;transition:transform .2s}
+.chat-toggle{width:50px;height:50px;background:var(--accent);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#000;transition:transform .2s}
 .chat-toggle:hover{transform:scale(1.06)}
-.chat-window{display:none;position:absolute;bottom:62px;right:0;width:340px;background:var(--bg2);border:1px solid var(--border)}
+.chat-window{display:none;position:fixed;bottom:88px;right:28px;width:340px;max-width:calc(100vw - 40px);background:var(--bg2);border:1px solid var(--border)}
 .chat-window.open{display:flex;flex-direction:column}
 .chat-header{background:var(--bg3);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;gap:12px}
 .chat-avatar{width:28px;height:28px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:#000;font-weight:700}
@@ -379,9 +379,9 @@ h1 em{font-style:normal;color:var(--text3)}
 .chat-msg.user{background:var(--accent);color:#000;align-self:flex-end}
 .chat-input-row{border-top:1px solid var(--border);display:flex}
 .chat-input{flex:1;background:transparent;border:none;outline:none;padding:13px 14px;font-family:var(--mono);font-size:12px;color:var(--text)}
-.chat-send{background:var(--accent);border:none;padding:0 14px;color:#000;cursor:none;font-family:var(--mono);font-size:12px}
+.chat-send{background:var(--accent);border:none;padding:0 14px;color:#000;cursor:pointer;font-family:var(--mono);font-size:12px}
 .chat-suggestions{padding:8px 18px;display:flex;flex-wrap:wrap;gap:5px;border-top:1px solid var(--border)}
-.chat-chip{font-family:var(--mono);font-size:10px;border:1px solid var(--border2);background:transparent;color:var(--text3);padding:4px 9px;cursor:none;transition:all .2s}
+.chat-chip{font-family:var(--mono);font-size:10px;border:1px solid var(--border2);background:transparent;color:var(--text3);padding:4px 9px;cursor:pointer;transition:all .2s}
 .chat-chip:hover{border-color:var(--accent);color:var(--accent)}
 
 /* ── FOOTER ── */
@@ -435,21 +435,141 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;justify
 .reveal.visible{opacity:1;transform:none}
 
 @media(max-width:900px){
-  nav{padding:14px 20px}.nav-links{display:none}
-  #hero{padding:90px 20px 60px}
-  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
-  #three-canvas{width:100%;opacity:.08!important;position:fixed;height:100vh}
-  .sw{padding:55px 20px}.sw-alt .si{padding:55px 20px}
+  /* Nav */
+  nav{padding:14px 16px}
+  .nav-links{display:none}
+  .nav-right{gap:6px;flex-wrap:wrap}
+  .nav-btn{font-size:9px;padding:5px 9px}
+  .nav-status{font-size:10px}
+
+  /* Hero */
+  #hero{padding:100px 20px 60px}
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  #three-canvas{width:100%;opacity:.06!important;position:fixed;height:100vh}
+
+  /* Layout */
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:32px}
+  .sw{padding:50px 20px}.sw-alt .si{padding:50px 20px}
+
+  /* Grids */
   .projects-grid{grid-template-columns:1fr}
   .skills-grid,.viz-grid{grid-template-columns:1fr}
   .dashboard-grid{grid-template-columns:repeat(2,1fr)}
   .certs-grid{grid-template-columns:1fr 1fr}
   .vol-grid{grid-template-columns:1fr}
-  .stats-strip{flex-wrap:wrap}
+  .demo-grid{grid-template-columns:1fr 1fr}
+
+  /* Stats strip */
+  .stats-strip{flex-wrap:wrap;padding:16px 20px}
   .stat-item{flex:0 0 50%;border-right:none;padding:14px 0;border-bottom:1px solid var(--border)}
-  .rb-inner{padding:0 20px}
+
+  /* Recruiter banner */
+  .rb-inner{padding:0 16px;flex-direction:column;align-items:flex-start;gap:8px}
+
+  /* Challenges */
+  .challenge-item{flex-direction:column;align-items:flex-start;gap:12px;padding:20px}
+  .ch-before,.ch-after{width:auto}
+  .ch-arrow{display:none}
+
+  /* CS compare table - hide on mobile */
+  .cs-compare-row{grid-template-columns:1.5fr 1fr 1fr}
+  .cs-compare-row > *:last-child,.cs-compare-row > *:nth-child(4){display:none}
+
+  /* Deep dive */
+  #dd-lessons{grid-template-columns:1fr}
+  #dd-metrics{grid-template-columns:1fr 1fr}
+
+  /* Footer */
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px 20px}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:14px}
 }
-@media(max-width:500px){.certs-grid{grid-template-columns:1fr}h1{font-size:2.8rem}}
+
+@media(max-width:600px){
+  /* Nav - minimal on phones */
+  nav{padding:12px 14px}
+  .nav-right{gap:5px}
+  .nav-btn{font-size:8px;padding:4px 7px;letter-spacing:.05em}
+  .nav-status{display:none}
+
+  /* Hero */
+  #hero{padding:88px 16px 48px}
+  h1{font-size:2.6rem!important;letter-spacing:-.02em}
+  .hero-desc{font-size:13px}
+  .hero-actions{flex-direction:column;gap:8px}
+  .hero-actions .btn{width:100%;justify-content:center;padding:13px 16px}
+
+  /* Terminal widget hidden on small phones */
+  .hero-terminal{display:none}
+
+  /* Stats strip - 2 per row */
+  .stats-strip{padding:12px 16px}
+  .stat-item{flex:0 0 50%;padding:12px 0}
+  .stat-num{font-size:24px}
+
+  /* Sections */
+  .sw{padding:40px 16px}.sw-alt .si{padding:40px 16px}
+
+  /* Certs, demos single column */
+  .certs-grid{grid-template-columns:1fr}
+  .demo-grid{grid-template-columns:1fr}
+
+  /* About skills wrap better */
+  .sk-grid{gap:5px}
+  .sk{font-size:9px;padding:3px 8px}
+
+  /* Timeline */
+  .timeline{padding-left:24px}
+  .tl-dot{left:-28px}
+
+  /* Project cards */
+  .project-metrics{flex-wrap:wrap;gap:12px}
+  .project-links{flex-wrap:wrap;gap:8px}
+
+  /* JD modal */
+  .jd-inner{padding:24px 18px}
+
+  /* Chat window on mobile */
+  #ai-assistant{bottom:16px;right:16px}
+  .chat-window{width:calc(100vw - 32px);right:0;bottom:60px}
+
+  /* Case study compare - stack on mobile */
+  .cs-compare-row{grid-template-columns:1fr;gap:4px}
+  .cs-compare-row > *:not(:first-child){display:none}
+
+  /* API key modal */
+  #api-key-modal > div{padding:24px 18px}
+
+  /* Skills comparison */
+  .cs-decisions,.dd-decisions{overflow-x:auto}
+  .cs-decision-row,.dd-decision-row{grid-template-columns:1fr 1fr}
+  .cs-decision-row > *:last-child,.dd-decision-row > *:last-child{display:none}
+
+  /* Engineering wins */
+  .ch-before,.ch-after,.ch-area{font-size:12px}
+  .ch-desc{font-size:12px}
+
+  /* Deep dive modal */
+  #deepdive-modal > div{padding:32px 16px 60px}
+  #dd-lessons{grid-template-columns:1fr}
+  #dd-metrics{grid-template-columns:1fr 1fr}
+  .arch-flow,.cs-flow,#dd-arch-flow{flex-direction:column;align-items:flex-start}
+}
+
+/* ── HAMBURGER MOBILE NAV ── */
+.nav-hamburger{display:none;background:none;border:1px solid var(--border2);color:var(--text3);font-size:14px;padding:5px 9px;cursor:pointer;transition:all .2s;line-height:1}
+.nav-hamburger:hover{border-color:var(--accent);color:var(--accent)}
+#nav-links.mobile-open{display:flex!important;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:rgba(8,8,8,.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px 24px;gap:18px;z-index:999}
+#nav-links.mobile-open a{font-size:14px;letter-spacing:.05em;padding:6px 0;border-bottom:1px solid var(--border)}
+
+@media(max-width:900px){
+  .nav-hamburger{display:block}
+}
+@media(hover:none),(pointer:coarse){
+  body{cursor:auto}
+  #cursor,#cursor-ring{display:none}
+  a,button,input,textarea,select{cursor:pointer}
+  .btn,.nav-btn,.arch-btn,.proj-link,.jd-run,.jd-close,.arch-close,.rb-close,.cs-tab,.dd-tab-btn{cursor:pointer}
+}
 </style>
 </head>
 <body>
@@ -525,7 +645,7 @@ We are looking for a Data Science intern with experience in Python, ML model bui
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-logo">&lt;<span>AKASH</span>.ms /&gt;</div>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="#about">About</a>
     <a href="#experience">Work</a>
     <a href="#projects">Projects</a>
@@ -534,6 +654,8 @@ We are looking for a Data Science intern with experience in Python, ML model bui
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-right">
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">☰</button>
+    <a href="https://drive.google.com/uc?export=download&id=1Y6qjVRV3Lz7Yj4K8mNpXwZaEbFcDsHt" download="Akash_MS_Resume.pdf" class="nav-btn" style="border-color:var(--green);color:var(--green);text-decoration:none" onclick="handleResumeDownload(event)">⬇ Resume</a>
     <button class="nav-btn" onclick="openJD()" title="AI Resume Tailor">⚡ Tailor CV</button>
     <button class="nav-btn" id="voice-btn" onclick="startVoice()" title="Voice Navigation">🎤 Voice</button>
     <button class="nav-btn" onclick="openTerminal()">[ terminal ]</button>
@@ -554,6 +676,7 @@ We are looking for a Data Science intern with experience in Python, ML model bui
       <div class="hero-actions reveal">
         <a href="https://github.com/AkashMs24" target="_blank" class="btn btn-solid">View GitHub</a>
         <a href="https://www.linkedin.com/in/akash-m-s-414a21297" target="_blank" class="btn">LinkedIn</a>
+        <a href="https://drive.google.com/uc?export=download&id=1Y6qjVRV3Lz7Yj4K8mNpXwZaEbFcDsHt" download="Akash_MS_Resume.pdf" class="btn" id="resume-download-btn" style="border-color:var(--green);color:var(--green)" onclick="handleResumeDownload(event)">⬇ Download Resume</a>
         <button class="btn btn-jd" onclick="openJD()">⚡ Upload JD → Tailor CV</button>
       </div>
     </div>
@@ -598,6 +721,7 @@ We are looking for a Data Science intern with experience in Python, ML model bui
     <div>
       <div class="sk-label">Honors &amp; Education</div>
       <div class="award-card reveal"><div class="award-title">🏆 Optum STEM Scholar 2025–26</div><div class="award-meta">Optum | NASSCOM Foundation · Feb 2026</div><div class="award-desc">₹30,000 scholarship — national selection for academic performance and STEM potential.</div></div>
+      <div class="award-card reveal" style="border-color:rgba(0,255,136,.25);background:rgba(0,255,136,.03)"><div class="award-title">🌿 FUSIONX 2026 Hackathon Winner</div><div class="award-meta" style="color:var(--green)">Best AI Innovation for Social Impact · JeevanMitra AI</div><div class="award-desc">Built a zero-cost serverless AI farming companion for Indian farmers in 48 hours — voice-enabled, 6 Indian languages, deployed on GitHub Pages.</div></div>
       <div class="award-card reveal"><div class="award-title">🌍 4th Innovative Project Expo 2024 — Top 70</div><div class="award-meta">Presidency University · Jun 2024</div><div class="award-desc">World's Largest Innovative Project Expo finalist.</div></div>
       <div class="award-card reveal"><div class="award-title">B.Tech — Data Science</div><div class="award-meta">Presidency University, Bangalore · 2023–2027</div><div class="award-desc">First Class with Distinction</div></div>
       <div class="award-card reveal"><div class="award-title">PU Science (PCMC)</div><div class="award-meta">RR Institute of Technology · 2021–2023</div><div class="award-desc">Distinction and Honors</div></div>
@@ -654,7 +778,6 @@ We are looking for a Data Science intern with experience in Python, ML model bui
         <a href="https://share.streamlit.io/user/akashms24" target="_blank" class="proj-link live">⬡ Live Demo</a>
         <a href="https://github.com/AkashMs24/Cost-Sensitive-Real-Time-Fraud-Detection-Decision-System" target="_blank" class="proj-link">↗ GitHub</a>
         <button class="arch-btn" onclick="openArch('fraud')">Architecture</button>
-        <button class="arch-btn" style="border-color:var(--green);color:var(--green)" onclick="openDeepDive('fraud')">⬡ Deep Dive</button>
         <button class="arch-btn" style="border-color:var(--green);color:var(--green)" onclick="openDeepDive('fraud')">⬡ Deep Dive</button>
       </div>
     </div>
@@ -729,6 +852,19 @@ We are looking for a Data Science intern with experience in Python, ML model bui
       </div>
     </div>
 
+    <div class="project-card" data-tags="python,nlp,voice,agritech,hackathon,multilingual,farming" style="border:1px solid rgba(0,255,136,.3);background:rgba(0,255,136,.02)">
+      <div class="card-glow"></div>
+      <div class="project-tag"><span class="live-badge">● LIVE</span><span class="rec-badge" style="background:var(--green);color:#000">🏆 HACKATHON WINNER</span>AI · AgriTech</div>
+      <div class="project-title">JeevanMitra AI — Smart Farming Companion</div>
+      <p class="project-desc">🥇 FUSIONX 2026 Winner — Best AI Innovation for Social Impact. Zero-cost serverless AI farming companion for Indian farmers built in 48 hours. Voice-enabled in 6 Indian languages, deployed on GitHub Pages with no backend infrastructure.</p>
+      <div class="project-metrics"><div class="metric"><span>6</span>Languages</div><div class="metric"><span>0₹</span>Infra Cost</div><div class="metric"><span>48h</span>Built</div></div>
+      <div class="project-tech"><span class="tech-tag">JavaScript</span><span class="tech-tag">NLP</span><span class="tech-tag">Voice API</span><span class="tech-tag">Serverless</span><span class="tech-tag">GitHub Pages</span></div>
+      <div class="project-links">
+        <a href="https://github.com/AkashMs24" target="_blank" class="proj-link live">⬡ Live Demo</a>
+        <a href="https://github.com/AkashMs24" target="_blank" class="proj-link">↗ GitHub</a>
+      </div>
+    </div>
+
     <div class="project-card" data-tags="python,ml,llm,xgboost,streamlit,bi,forecasting,anomaly">
       <div class="card-glow"></div>
       <div class="project-tag"><span class="live-badge">● LIVE</span>ML · LLM · Business Intelligence</div>
@@ -754,14 +890,15 @@ We are looking for a Data Science intern with experience in Python, ML model bui
       </div>
     </div>
 
-    <div class="project-card" data-tags="javascript,nlp,chatbot,rulebasednlp,farming,html,css">
+    <div class="project-card" data-tags="javascript,nlp,chatbot,groq,farming,html,css,voice,multilingual" style="border:1px solid rgba(0,255,136,.3);background:rgba(0,255,136,.03)">
       <div class="card-glow"></div>
-      <div class="project-tag">NLP · Chatbot · AgriTech</div>
-      <div class="project-title">JeevanMitra AI — Smart Farming Chatbot</div>
-      <p class="project-desc">Rule-based NLP chatbot serving as a smart farming companion. Provides crop guidance, weather advisory, and farming tips through an intuitive conversational interface.</p>
-      <div class="project-metrics"><div class="metric"><span>NLP</span>Rule-Based</div><div class="metric"><span>JS</span>Frontend</div><div class="metric"><span>Smart</span>Advisory</div></div>
-      <div class="project-tech"><span class="tech-tag">JavaScript</span><span class="tech-tag">Rule-based NLP</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">Chatbot</span></div>
+      <div class="project-tag"><span class="live-badge">● LIVE</span><span style="color:gold;background:rgba(255,215,0,.15);padding:2px 6px;font-size:9px;letter-spacing:.1em;font-weight:700;margin-left:4px">🏆 HACKATHON WINNER</span></div>
+      <div class="project-title">JeevanMitra AI — Smart Farming Companion</div>
+      <p class="project-desc">🏆 FUSIONX 2026 Winner — Best AI Innovation for Social Impact. Zero-backend AI farming app with 7 features: crop advisory, yield forecasting, disease detection, live market prices, voice interface &amp; 6 Indian language support. Works on ₹2000 phones.</p>
+      <div class="project-metrics"><div class="metric"><span>$0</span>Infrastructure</div><div class="metric"><span>6</span>Languages</div><div class="metric"><span>48h</span>Built In</div></div>
+      <div class="project-tech"><span class="tech-tag" style="border-color:rgba(0,255,136,.4);color:var(--green)">JavaScript</span><span class="tech-tag">Groq API</span><span class="tech-tag">Web Speech API</span><span class="tech-tag">GitHub Pages</span><span class="tech-tag">Serverless</span></div>
       <div class="project-links">
+        <a href="https://akashms24.github.io/JeevanMitraAI/" target="_blank" class="proj-link live">⬡ Live Demo</a>
         <a href="https://github.com/AkashMs24/JeevanMitraAI" target="_blank" class="proj-link">↗ GitHub</a>
       </div>
     </div>
@@ -1168,7 +1305,7 @@ We are looking for a Data Science intern with experience in Python, ML model bui
       <button id="voice-chat-btn" title="Toggle voice responses" onclick="toggleChatVoice()" style="background:none;border:1px solid #333;color:#666;font-family:var(--mono);font-size:10px;padding:3px 7px;cursor:pointer;letter-spacing:.05em;transition:all .2s" title="Toggle voice responses">🔊</button>
     </div>
     <div class="chat-messages" id="chat-messages">
-      <div class="chat-msg bot">Hey! I'm Akash's AI assistant — powered by Claude. Ask about projects, skills, certs, or anything about Akash 👋</div>
+      <div class="chat-msg bot">Hey! I'm Akash's AI assistant — powered by groq. Ask about projects, skills, certs, or anything about Akash 👋</div>
     </div>
     <div class="chat-suggestions">
       <button class="chat-chip" onclick="sendChip(this)">Best project?</button>
@@ -2278,6 +2415,30 @@ function toggleChat(){
 const GROQ_URL='https://api.groq.com/openai/v1/chat/completions';
 const GROQ_MODEL='llama-3.3-70b-versatile';
 
+// Secure key management - stored only in sessionStorage, never in code
+function getGroqKey(){return sessionStorage.getItem('groq_api_key')||'';}
+function setGroqKey(k){sessionStorage.setItem('groq_api_key',k);}
+
+function promptForApiKey(cb){
+  const existing=getGroqKey();
+  if(existing){cb(existing);return;}
+  // Show key modal
+  document.getElementById('api-key-modal').style.display='flex';
+  document.getElementById('api-key-cb-store')._cb=cb;
+}
+function submitApiKey(){
+  const k=document.getElementById('api-key-input').value.trim();
+  if(!k){alert('Please enter your Groq API key.');return;}
+  setGroqKey(k);
+  document.getElementById('api-key-modal').style.display='none';
+  const cb=document.getElementById('api-key-cb-store')._cb;
+  if(cb)cb(k);
+}
+function clearApiKey(){
+  sessionStorage.removeItem('groq_api_key');
+  document.getElementById('api-key-modal').style.display='none';
+}
+
 const CHAT_SYSTEM=`You are Akash M S's portfolio assistant — smart, friendly, and enthusiastic about his work. Answer questions about Akash concisely (2-3 sentences max unless asked for detail).
 
 ABOUT AKASH:
@@ -2325,52 +2486,54 @@ async function sendChat(){
   const input=document.getElementById('chat-input');
   const msg=input.value.trim();
   if(!msg)return;
-  addMsg(msg,'user');
-  input.value='';
-  chatHistory.push({role:'user',content:msg});
+  
+  promptForApiKey(async function(apiKey){
+    addMsg(msg,'user');
+    input.value='';
+    chatHistory.push({role:'user',content:msg});
 
-  // typing indicator
-  const typing=document.createElement('div');
-  typing.className='chat-msg bot';typing.id='chat-typing';
-  typing.innerHTML='<span style="opacity:.4;letter-spacing:.2em">• • •</span>';
-  document.getElementById('chat-messages').appendChild(typing);
-  document.getElementById('chat-messages').scrollTop=99999;
+    // typing indicator
+    const typing=document.createElement('div');
+    typing.className='chat-msg bot';typing.id='chat-typing';
+    typing.innerHTML='<span style="opacity:.4;letter-spacing:.2em">• • •</span>';
+    document.getElementById('chat-messages').appendChild(typing);
+    document.getElementById('chat-messages').scrollTop=99999;
 
-  try{
-    const res=await fetch(GROQ_URL,{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'Authorization':'Bearer '+GROQ_KEY
-      },
-      body:JSON.stringify({
-        model:GROQ_MODEL,
-        max_tokens:400,
-        temperature:0.7,
-        messages:[
-          {role:'system',content:CHAT_SYSTEM},
-          ...chatHistory
-        ]
-      })
-    });
-    if(!res.ok){
-      const err=await res.text();
-      throw new Error('Groq error: '+res.status+' '+err);
+    try{
+      const res=await fetch(GROQ_URL,{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization':'Bearer '+apiKey
+        },
+        body:JSON.stringify({
+          model:GROQ_MODEL,
+          max_tokens:400,
+          temperature:0.7,
+          messages:[
+            {role:'system',content:CHAT_SYSTEM},
+            ...chatHistory
+          ]
+        })
+      });
+      if(!res.ok){
+        const err=await res.text();
+        if(res.status===401){sessionStorage.removeItem('groq_api_key');}
+        throw new Error('Groq error: '+res.status+' '+err);
+      }
+      const data=await res.json();
+      const reply=data.choices?.[0]?.message?.content?.trim()||"I couldn't get a response — please try again!";
+      document.getElementById('chat-typing')?.remove();
+      addMsg(reply,'bot');
+      chatHistory.push({role:'assistant',content:reply});
+      if(chatHistory.length>10) chatHistory=chatHistory.slice(-10);
+      if(chatVoiceEnabled) speakText(reply);
+    }catch(e){
+      console.error('Chat error:',e);
+      document.getElementById('chat-typing')?.remove();
+      addMsg("⚠ Couldn't connect. Check your API key or internet connection.",'bot');
     }
-    const data=await res.json();
-    const reply=data.choices?.[0]?.message?.content?.trim()||"I couldn't get a response — please try again!";
-    document.getElementById('chat-typing')?.remove();
-    addMsg(reply,'bot');
-    chatHistory.push({role:'assistant',content:reply});
-    // Keep history to last 10 messages to avoid token overflow
-    if(chatHistory.length>10) chatHistory=chatHistory.slice(-10);
-    // Speak if voice is on
-    if(chatVoiceEnabled) speakText(reply);
-  }catch(e){
-    console.error('Chat error:',e);
-    document.getElementById('chat-typing')?.remove();
-    addMsg("⚠ Couldn't connect right now. Check your internet connection and try again.",'bot');
-  }
+  });
 }
 
 function sendChip(el){document.getElementById('chat-input').value=el.textContent;sendChat();}
@@ -2381,6 +2544,54 @@ function addMsg(text,type){
   div.textContent=text;
   msgs.appendChild(div);
   msgs.scrollTop=msgs.scrollHeight;
+}
+
+/* Mobile nav toggle */
+function toggleMobileNav(){
+  const links=document.getElementById('nav-links');
+  const btn=document.getElementById('nav-hamburger');
+  links.classList.toggle('mobile-open');
+  btn.textContent=links.classList.contains('mobile-open')?'✕':'☰';
+}
+// Close mobile nav on link click
+document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('nav-links').classList.remove('mobile-open');
+  document.getElementById('nav-hamburger').textContent='☰';
+}));
+</script>
+
+<!-- API KEY MODAL -->
+<div id="api-key-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:5000;align-items:center;justify-content:center;padding:20px">
+  <div style="background:var(--bg2);border:1px solid var(--border);max-width:520px;width:100%;padding:36px;position:relative">
+    <div style="font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px">Chat Assistant Setup</div>
+    <div style="font-size:17px;font-weight:700;color:var(--text);margin-bottom:12px">Enter Your Groq API Key</div>
+    <p style="font-family:var(--mono);font-size:12px;color:var(--text2);line-height:1.75;margin-bottom:8px">The chatbot is powered by <strong style="color:var(--accent)">Groq LLaMA-3</strong>. Your key is stored only in this browser session — never sent to any server other than Groq.</p>
+    <p style="font-family:var(--mono);font-size:11px;color:var(--text3);margin-bottom:20px">Get a free key at <a href="https://console.groq.com/keys" target="_blank" style="color:var(--blue)">console.groq.com/keys</a></p>
+    <div id="api-key-cb-store"></div>
+    <input id="api-key-input" type="password" placeholder="gsk_..." style="width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:13px;padding:12px 16px;outline:none;margin-bottom:14px;box-sizing:border-box" onkeydown="if(event.key==='Enter')submitApiKey()">
+    <div style="display:flex;gap:10px">
+      <button onclick="submitApiKey()" style="flex:1;background:var(--accent);color:#000;border:none;padding:11px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-weight:700">Start Chatting →</button>
+      <button onclick="clearApiKey()" style="background:none;border:1px solid var(--border2);color:var(--text3);padding:11px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;cursor:pointer">Cancel</button>
+    </div>
+    <p style="font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:14px;line-height:1.6">🔒 Your key stays in <code style="color:var(--green)">sessionStorage</code> only — cleared when you close the tab. Never committed to code or GitHub.</p>
+  </div>
+</div>
+
+<script>
+// Resume download handler
+function handleResumeDownload(e){
+  e.preventDefault();
+  // TODO: Replace YOUR_GOOGLE_DRIVE_FILE_ID with your actual Google Drive file ID
+  // How: Upload PDF to Drive → Share → Anyone with link → copy the file ID from the URL
+  const FILE_ID = 'YOUR_GOOGLE_DRIVE_FILE_ID';
+  if(FILE_ID === 'YOUR_GOOGLE_DRIVE_FILE_ID'){
+    // Fallback: open LinkedIn profile so recruiters can still reach you
+    if(confirm('Resume link not yet configured.\n\nClick OK to view Akash\'s LinkedIn profile instead, or Cancel to close.')){
+      window.open('https://www.linkedin.com/in/akash-m-s-414a21297','_blank');
+    }
+    return;
+  }
+  window.open('https://drive.google.com/file/d/'+FILE_ID+'/view','_blank');
 }
 </script>
 </body>
