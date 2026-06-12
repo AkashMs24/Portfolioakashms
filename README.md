@@ -1,6 +1,6 @@
 # 🌐 Akash M S — Portfolio
 
-🚀 Live Website: https://project-rv232-git-main-akashms24s-projects.vercel.app/
+🚀 Live Website: https://akashms.vercel.app/
 
 ## 👨‍💻 About Me
 Data Science student specializing in Machine Learning, Analytics, and AI-based systems.
