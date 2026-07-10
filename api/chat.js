@@ -8,6 +8,7 @@
 //   GROQ_API_KEY = gsk_...
 //
 // Frontend calls this as: POST /api/chat  with body { messages: [{role,content}, ...] }
+// The system prompt is added HERE, server-side — the browser never sends it.
 
 const CHAT_SYS = `You are Akash M S's portfolio assistant — smart, friendly, and knowledgeable about his work. Keep answers concise (2-4 sentences) unless asked for detail.
 
@@ -42,8 +43,8 @@ TECH STACK: Python, SQL, JavaScript/TypeScript, R, React, Node.js, FastAPI, Flas
 
 PHILOSOPHY: "WHY always beats WHAT" — specializes in Explainable AI where every prediction comes with a business-readable reason.`;
 
-const MAX_MESSAGES = 14;        // hard cap on conversation length sent per request
-const MAX_CHARS_PER_MSG = 2000; // hard cap on any single user/assistant message
+const MAX_MESSAGES = 14;
+const MAX_CHARS_PER_MSG = 2000;
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
