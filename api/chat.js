@@ -12,7 +12,7 @@
 const MAX_MESSAGES = 14;      // hard cap on conversation length sent per request
 const MAX_CHARS_PER_MSG = 2000; // hard cap on any single message's length
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
