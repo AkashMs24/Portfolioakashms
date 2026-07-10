@@ -603,21 +603,6 @@
   </div>
   <button class="chat-toggle-btn" onclick="toggleChat()"><span id="chat-icon">💬</span></button>
 </div>
-<div class="modal" id="api-modal">
-  <div class="modal-inner" style="max-width:500px">
-    <button class="modal-close" onclick="document.getElementById('api-modal').classList.remove('open')">✕</button>
-    <div class="modal-title">Chat Setup — Groq API Key</div>
-    <p style="font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.75;margin-bottom:8px">The chatbot runs on <strong style="color:var(--accent)">Groq LLaMA-3.3-70b</strong>. Your key stays in this browser session only — never logged or transmitted elsewhere.</p>
-    <p style="font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:18px">Get a free key at <a href="https://console.groq.com/keys" target="_blank" style="color:var(--blue);cursor:pointer">console.groq.com/keys</a></p>
-    <div id="api-cb-store"></div>
-    <input id="api-key-in" type="password" placeholder="gsk_..." style="width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:11px 14px;outline:none;margin-bottom:12px;box-sizing:border-box" onkeydown="if(event.key==='Enter')submitKey()">
-    <div style="display:flex;gap:10px">
-      <button onclick="submitKey()" style="flex:1;background:var(--accent);color:#000;border:none;padding:10px 20px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-weight:700">Start Chatting →</button>
-      <button onclick="document.getElementById('api-modal').classList.remove('open')" style="background:none;border:1px solid var(--border2);color:var(--text3);padding:10px 20px;font-family:var(--mono);font-size:10px;cursor:pointer">Cancel</button>
-    </div>
-    <p style="font-family:var(--mono);font-size:9px;color:var(--text3);margin-top:12px;line-height:1.6">🔒 Key stored in <code style="color:var(--green)">sessionStorage</code> only — cleared when you close the tab.</p>
-  </div>
-</div>
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
 </body>
