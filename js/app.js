@@ -172,7 +172,7 @@ async function sendChat(){
   const typing=document.createElement('div');typing.className='cmsg bot';typing.id='c-typing';typing.innerHTML='<span style="opacity:.4;letter-spacing:.2em">· · ·</span>';
   document.getElementById('chat-msgs').appendChild(typing);document.getElementById('chat-msgs').scrollTop=99999;
   try{
-    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'system',content:CHAT_SYS},...chatHist]})});
+    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:chatHist})});
     if(!res.ok)throw new Error('API '+res.status);
     const data=await res.json();
     const reply=data.choices?.[0]?.message?.content?.trim()||"Sorry, couldn't get a response!";
