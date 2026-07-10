@@ -162,39 +162,23 @@ document.getElementById('term-input').addEventListener('keydown',function(e){
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTerminal()});
 
 let chatHist=[];
-function getKey(){return sessionStorage.getItem('groq_key')||''}
-function setKey(k){sessionStorage.setItem('groq_key',k)}
-function promptKey(cb){
-  if(getKey()){cb(getKey());return}
-  document.getElementById('api-modal').classList.add('open');
-  document.getElementById('api-cb-store')._cb=cb;
-}
-function submitKey(){
-  const k=document.getElementById('api-key-in').value.trim();
-  if(!k){alert('Please enter your Groq API key.');return}
-  setKey(k);document.getElementById('api-modal').classList.remove('open');
-  const cb=document.getElementById('api-cb-store')._cb;
-  if(cb)cb(k);
-}
 function toggleChat(){const w=document.getElementById('chat-win'),ic=document.getElementById('chat-icon');w.classList.toggle('open');ic.textContent=w.classList.contains('open')?'✕':'💬'}
 function sendChip(el){document.getElementById('chat-in').value=el.textContent;sendChat()}
 function addMsg(txt,type){const m=document.getElementById('chat-msgs'),d=document.createElement('div');d.className='cmsg '+type;d.textContent=txt;m.appendChild(d);m.scrollTop=m.scrollHeight}
 async function sendChat(){
   const inp=document.getElementById('chat-in'),msg=inp.value.trim();
   if(!msg)return;
-  promptKey(async function(k){
-    addMsg(msg,'user');inp.value='';chatHist.push({role:'user',content:msg});
-    const typing=document.createElement('div');typing.className='cmsg bot';typing.id='c-typing';typing.innerHTML='<span style="opacity:.4;letter-spacing:.2em">· · ·</span>';
-    document.getElementById('chat-msgs').appendChild(typing);document.getElementById('chat-msgs').scrollTop=99999;
-    try{
-      const res=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+k},body:JSON.stringify({model:'llama-3.3-70b-versatile',max_tokens:400,temperature:.7,messages:[{role:'system',content:CHAT_SYS},...chatHist]})});
-      if(!res.ok){if(res.status===401)sessionStorage.removeItem('groq_key');throw new Error('API '+res.status)}
-      const data=await res.json();
-      const reply=data.choices?.[0]?.message?.content?.trim()||"Sorry, couldn't get a response!";
-      document.getElementById('c-typing')?.remove();addMsg(reply,'bot');chatHist.push({role:'assistant',content:reply});
-      if(chatHist.length>12)chatHist=chatHist.slice(-12);
-    }catch(e){document.getElementById('c-typing')?.remove();addMsg('⚠ Check your API key or connection.','bot')}
-  });
+  addMsg(msg,'user');inp.value='';chatHist.push({role:'user',content:msg});
+  const typing=document.createElement('div');typing.className='cmsg bot';typing.id='c-typing';typing.innerHTML='<span style="opacity:.4;letter-spacing:.2em">· · ·</span>';
+  document.getElementById('chat-msgs').appendChild(typing);document.getElementById('chat-msgs').scrollTop=99999;
+  try{
+    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'system',content:CHAT_SYS},...chatHist]})});
+    if(!res.ok)throw new Error('API '+res.status);
+    const data=await res.json();
+    const reply=data.choices?.[0]?.message?.content?.trim()||"Sorry, couldn't get a response!";
+    document.getElementById('c-typing')?.remove();addMsg(reply,'bot');chatHist.push({role:'assistant',content:reply});
+    if(chatHist.length>12)chatHist=chatHist.slice(-12);
+  }catch(e){document.getElementById('c-typing')?.remove();addMsg('⚠ The assistant is temporarily unavailable. Please try again shortly.','bot')}
 }
 function toggleMobileNav(){
   const l=document.getElementById('nav-links'),b=document.getElementById('nav-hamburger');
